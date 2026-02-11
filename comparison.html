@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Comparison Sliders</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        h2 { color: #333; }
+        
+        /* Container style */
+        .comparison-wrapper {
+            margin-bottom: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .image-container {
+            position: relative;
+            /* Adjust dimensions here or remove to let images dictate size */
+            width: 600px; 
+            height: 400px; 
+            overflow: hidden;
+        }
+
+        .image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures images fill the box */
+            display: block;
+        }
+
+        /* The top image (Before) */
+        .img-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%; /* Start at 50% */
+            height: 100%;
+            overflow: hidden;
+            border-right: 3px solid white; /* The white slider line */
+            z-index: 2;
+        }
+        
+        /* The slider handle overlay */
+        .slider-range {
+            position: absolute;
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: 3;
+            top: 0;
+            left: 0;
+            margin: 0;
+            cursor: ew-resize; /* East-West resize cursor */
+        }
+
+        /* Hiding standard browser slider thumb styles */
+        .slider-range::-webkit-slider-thumb { -webkit-appearance: none; width: 0; height: 0; }
+        .slider-range::-moz-range-thumb { width: 0; height: 0; }
+
+        /* Labels */
+        .label {
+            position: absolute;
+            top: 10px;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            z-index: 4;
+            pointer-events: none;
+        }
+        .label-before { left: 10px; }
+        .label-after { right: 10px; }
+
+    </style>
+</head>
+<body>
+
+    <!-- IFNI SLIDER -->
+    <h2>IFNI Comparison</h2>
+    <div class="comparison-wrapper">
+        <div class="image-container" id="container1">
+            <!-- Background Image (After / Newest) -->
+            <img src="09-12-2025 ifni.PNG" alt="Ifni After">
+            <span class="label label-after">09-12-2025</span>
+
+            <!-- Foreground Image (Before / Oldest) - Width controlled by slider -->
+            <div class="img-overlay" id="overlay1">
+                <img src="07-02-2025 ifni.PNG" alt="Ifni Before">
+            </div>
+            <span class="label label-before">07-02-2025</span>
+
+            <!-- Invisible Range Slider -->
+            <input type="range" min="0" max="100" value="50" class="slider-range" 
+                   oninput="updateSlider('overlay1', this.value)">
+        </div>
+    </div>
+
+    <!-- KHENFOUF SLIDER -->
+    <h2>KHENFOUF Comparison</h2>
+    <div class="comparison-wrapper">
+        <div class="image-container" id="container2">
+            <!-- Background Image (After / Newest) -->
+            <img src="19-11-2025 khenfouf.PNG" alt="Khenfouf After">
+            <span class="label label-after">19-11-2025</span>
+
+            <!-- Foreground Image (Before / Oldest) -->
+            <div class="img-overlay" id="overlay2">
+                <img src="07-02-2025 khenfouf.PNG" alt="Khenfouf Before">
+            </div>
+            <span class="label label-before">07-02-2025</span>
+
+            <!-- Invisible Range Slider -->
+            <input type="range" min="0" max="100" value="50" class="slider-range" 
+                   oninput="updateSlider('overlay2', this.value)">
+        </div>
+    </div>
+
+    <script>
+        function updateSlider(overlayId, value) {
+            document.getElementById(overlayId).style.width = value + "%";
+        }
+    </script>
+</body>
+</html>
