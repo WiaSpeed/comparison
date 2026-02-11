@@ -1,42 +1,4 @@
 
-Untitled45.ipynb
-Untitled45.ipynb_
-Fichiers
-..
-Déposez des fichiers pour les importer dans l'espace de stockage de la session.
-Disque
-86.51 GB disponible(s)
-
-[1]
-0 s
-
-# Write to an HTML file in the colab folder
-with open("comparison.html", "w") as f:
-    f.write(html_content)
-
-print("HTML file generated successfully as 'comparison.html'.")
-print("Below is a preview (NOTE: Images will only show if they are uploaded to the Files tab):")
-
-# Display in the notebook
-display(HTML(html_content))
-
-
-[5]
-3 s
-print("-" * 50)
-
-# B. Create the Colab Preview (using Embedded Base64 images)
-# This allows you to see the result right here in the notebook.
-try:
-    preview_html = generate_html(embed_images=True)
-    print("2. Displaying Interactive Preview below:")
-    display(HTML(preview_html))
-except Exception as e:
-    print("Error generating preview (Did you upload the images?):", e)
-
-Produits payants Colab - Résilier les contrats ici
-12345678910111213141516171819202122232425262728293031323334353637
-
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -46,4 +8,41 @@ Produits payants Colab - Résilier les contrats ici
         <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
         <style>
             body {
+                font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                background-color: #fafafa;
+                padding: 20px;
+                text-align: center;
+            }
+            .container {
+                max-width: 800px;
+                margin: 0 auto 60px auto;
+            }
+            h2 { margin-bottom: 10px; color: #333; }
+            .juxtapose { margin-bottom: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        </style>
+    </head>
+    <body>
 
+        <div class="container">
+            <h2>Location: IFNI</h2>
+            <!-- Juxtapose Container 1 -->
+            <div class="juxtapose" data-starting-position="50%" data-mode="horizontal">
+                <img src="07-02-2026 ifni.PNG" data-label="07-02-2026" alt="Ifni Before">
+                <img src="09-12-2025 ifni.PNG" data-label="09-12-2025" alt="Ifni After">
+            </div>
+        </div>
+
+        <div class="container">
+            <h2>Location: KHENFOUF</h2>
+            <!-- Juxtapose Container 2 -->
+            <div class="juxtapose" data-starting-position="50%" data-mode="horizontal">
+                <img src="07-02-2026 khenfouf.PNG" data-label="07-02-2026" alt="Khenfouf Before">
+                <img src="19-11-2025 khenfouf.PNG" data-label="19-11-2025" alt="Khenfouf After">
+            </div>
+        </div>
+
+        <!-- JuxtaposeJS Script -->
+        <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
+    </body>
+    </html>
+    
